@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;TestNG_vtigerAutomation-TestNG_vtigerAutomation-8_ExcelDataRead&apos; to &apos;TestNG_vtigerAutomation-8_ExcelDataRead&apos;" description="Rename resource &apos;TestNG_vtigerAutomation-TestNG_vtigerAutomation-8_ExcelDataRead&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/TestNG_vtigerAutomation-TestNG_vtigerAutomation-8_ExcelDataRead" name="TestNG_vtigerAutomation-8_ExcelDataRead" stamp="1728471118176" updateReferences="true"/>
+</session>

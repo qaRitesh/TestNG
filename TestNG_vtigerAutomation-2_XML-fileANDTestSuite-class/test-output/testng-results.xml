@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-09-11T23:04:21 IST" name="Default suite" finished-at="2024-09-11T23:05:52 IST" duration-ms="91189">
+    <groups>
+    </groups>
+    <test started-at="2024-09-11T23:04:21 IST" name="Default test" finished-at="2024-09-11T23:05:52 IST" duration-ms="91189">
+      <class name="com.mondh.vtiger.TestScript.InventoryInvoiceTestScript">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:com.mondh.vtiger.TestScript.InventoryInvoiceTestScript@76a4ebf2]" started-at="2024-09-11T23:04:21 IST" name="beforeMethod" finished-at="2024-09-11T23:04:26 IST" duration-ms="5208" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="verifyVT005CreateInvoice()[pri:0, instance:com.mondh.vtiger.TestScript.InventoryInvoiceTestScript@76a4ebf2]" started-at="2024-09-11T23:04:26 IST" name="verifyVT005CreateInvoice" finished-at="2024-09-11T23:05:50 IST" duration-ms="84308" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyVT005CreateInvoice -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.mondh.vtiger.TestScript.InventoryInvoiceTestScript@76a4ebf2]" started-at="2024-09-11T23:05:50 IST" name="afterMethod" finished-at="2024-09-11T23:05:52 IST" duration-ms="1580" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- com.mondh.vtiger.TestScript.InventoryInvoiceTestScript -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

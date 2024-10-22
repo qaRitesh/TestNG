@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="4" passed="3" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-09-26T13:55:24 IST" name="VtigerTesting" finished-at="2024-09-26T13:56:33 IST" duration-ms="68666">
+    <groups>
+      <group name="Smoke">
+        <method signature="MarketingAccountTestScript.verifyVT001CreateAccounts()[pri:1, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" name="verifyVT001CreateAccounts" class="com.mondh.vtiger.TestScript.MarketingAccountTestScript"/>
+        <method signature="MarketingAccountTestScript.verifyVT002UpdateAccounts()[pri:2, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" name="verifyVT002UpdateAccounts" class="com.mondh.vtiger.TestScript.MarketingAccountTestScript"/>
+        <method signature="MarketingAccountTestScript.verifyVT003SearchAccounts()[pri:3, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" name="verifyVT003SearchAccounts" class="com.mondh.vtiger.TestScript.MarketingAccountTestScript"/>
+        <method signature="MarketingAccountTestScript.verifyVT004DeleteAccount()[pri:4, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" name="verifyVT004DeleteAccount" class="com.mondh.vtiger.TestScript.MarketingAccountTestScript"/>
+      </group> <!-- Smoke -->
+    </groups>
+    <test started-at="2024-09-26T13:55:24 IST" name="marketing" finished-at="2024-09-26T13:56:33 IST" duration-ms="68666">
+      <class name="com.mondh.vtiger.TestScript.MarketingAccountTestScript">
+        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" started-at="2024-09-26T13:55:24 IST" name="beforeSuite" finished-at="2024-09-26T13:55:24 IST" duration-ms="19" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeSuite -->
+        <test-method is-config="true" signature="beforeClass(java.lang.String)[pri:0, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" started-at="2024-09-26T13:55:24 IST" name="beforeClass" finished-at="2024-09-26T13:55:27 IST" duration-ms="2631" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[ChromeBrowser]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method is-config="true" signature="beforegroup()[pri:0, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" started-at="2024-09-26T13:55:27 IST" name="beforegroup" finished-at="2024-09-26T13:55:27 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforegroup -->
+        <test-method is-config="true" signature="beforeMethod(java.lang.String,java.lang.String)[pri:0, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" started-at="2024-09-26T13:55:27 IST" name="beforeMethod" finished-at="2024-09-26T13:55:29 IST" duration-ms="2253" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[admin]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="verifyVT001CreateAccounts()[pri:1, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" started-at="2024-09-26T13:55:29 IST" name="verifyVT001CreateAccounts" finished-at="2024-09-26T13:55:47 IST" duration-ms="17435" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyVT001CreateAccounts -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" started-at="2024-09-26T13:55:47 IST" name="afterMethod" finished-at="2024-09-26T13:55:48 IST" duration-ms="1141" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="beforeMethod(java.lang.String,java.lang.String)[pri:0, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" started-at="2024-09-26T13:55:48 IST" name="beforeMethod" finished-at="2024-09-26T13:55:50 IST" duration-ms="2300" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[admin]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="verifyVT002UpdateAccounts()[pri:2, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" started-at="2024-09-26T13:55:50 IST" name="verifyVT002UpdateAccounts" finished-at="2024-09-26T13:56:05 IST" duration-ms="14949" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyVT002UpdateAccounts -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" started-at="2024-09-26T13:56:05 IST" name="afterMethod" finished-at="2024-09-26T13:56:06 IST" duration-ms="1171" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="beforeMethod(java.lang.String,java.lang.String)[pri:0, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" started-at="2024-09-26T13:56:06 IST" name="beforeMethod" finished-at="2024-09-26T13:56:08 IST" duration-ms="2139" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[admin]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="verifyVT003SearchAccounts()[pri:3, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" started-at="2024-09-26T13:56:08 IST" name="verifyVT003SearchAccounts" finished-at="2024-09-26T13:56:14 IST" depends-on-methods="com.mondh.vtiger.TestScript.MarketingAccountTestScript.verifyVT002UpdateAccounts" duration-ms="5747" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyVT003SearchAccounts -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" started-at="2024-09-26T13:56:14 IST" name="afterMethod" finished-at="2024-09-26T13:56:16 IST" duration-ms="1445" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="beforeMethod(java.lang.String,java.lang.String)[pri:0, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" started-at="2024-09-26T13:56:16 IST" name="beforeMethod" finished-at="2024-09-26T13:56:18 IST" duration-ms="2126" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[admin]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method signature="verifyVT004DeleteAccount()[pri:4, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" started-at="2024-09-26T13:56:18 IST" name="verifyVT004DeleteAccount" finished-at="2024-09-26T13:56:32 IST" duration-ms="13886" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [Bhairaja] but found [gooduivtiger]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [Bhairaja] but found [gooduivtiger]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.mondh.vtiger.CommonBasic.CommonReusableCode.checkDeleteDataOrNot(CommonReusableCode.java:181)
+at com.mondh.vtiger.TestScript.MarketingAccountTestScript.verifyVT004DeleteAccount(MarketingAccountTestScript.java:97)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyVT004DeleteAccount -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" started-at="2024-09-26T13:56:32 IST" name="afterMethod" finished-at="2024-09-26T13:56:33 IST" duration-ms="1105" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="aftergroup()[pri:0, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" started-at="2024-09-26T13:56:33 IST" name="aftergroup" finished-at="2024-09-26T13:56:33 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- aftergroup -->
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" started-at="2024-09-26T13:56:33 IST" name="afterClass" finished-at="2024-09-26T13:56:33 IST" duration-ms="234" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+        <test-method is-config="true" signature="afterSuite()[pri:0, instance:com.mondh.vtiger.TestScript.MarketingAccountTestScript@cc43f62]" started-at="2024-09-26T13:56:33 IST" name="afterSuite" finished-at="2024-09-26T13:56:33 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- com.mondh.vtiger.TestScript.MarketingAccountTestScript -->
+    </test> <!-- marketing -->
+  </suite> <!-- VtigerTesting -->
+</testng-results>

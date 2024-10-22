@@ -28,7 +28,7 @@ public class MarketingAccountTestScript extends BaseTest {
 			data1[2]="7412589630";
 			data1[3]="djmodh";
 			data1[4]="@gmai.com";
-			data1[5]="1239874456";
+			data1[5]="1239874565";
 			
 		String[][] dataProvider=new String[1][6];
 				   dataProvider[0]=data1;

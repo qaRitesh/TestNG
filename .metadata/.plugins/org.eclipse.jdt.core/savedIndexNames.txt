@@ -1,7 +1,6 @@
 INDEX VERSION 1.134+C:\Users\my701\OneDrive\Documents\TestNG\.metadata\.plugins\org.eclipse.jdt.core
 1873081700.index
 438895712.index
-1166785276.index
 971660336.index
 1381750934.index
 2961093049.index

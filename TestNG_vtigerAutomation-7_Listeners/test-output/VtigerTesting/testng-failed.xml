@@ -1,32 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [VtigerTesting]" guice-stage="DEVELOPMENT" verbose="8">
-  <parameter name="password" value="admin"/>
-  <parameter name="browser" value="ChromeBrowser"/>
-  <parameter name="username" value="admin"/>
+  <listeners>
+    <listener class-name="com.mondh.vtiger.genericyCodes.AnnotationTransformer"/>
+  </listeners>
   <test thread-count="5" name="marketing(failed)" verbose="8">
-    <groups>
-      <run>
-        <include name="Smoke"/>
-        <exclude name="Regression"/>
-      </run>
-    </groups>
     <classes>
-      <class name="com.mondh.vtiger.TestScript.MarketingAccountTestScript">
+      <class name="com.mondh.vtiger.TestScript.ListenerBase">
         <methods>
-          <include name="beforeClass"/>
-          <include name="beforeMethod"/>
-          <include name="verifyVT002UpdateAccounts"/>
-          <include name="beforegroup"/>
-          <include name="afterClass"/>
-          <include name="verifyVT003SearchAccounts"/>
-          <include name="beforeSuite"/>
-          <include name="verifyVT004DeleteAccount"/>
-          <include name="afterMethod"/>
-          <include name="verifyVT001CreateAccounts"/>
-          <include name="afterSuite"/>
+          <include name="method1"/>
         </methods>
-      </class> <!-- com.mondh.vtiger.TestScript.MarketingAccountTestScript -->
+      </class> <!-- com.mondh.vtiger.TestScript.ListenerBase -->
     </classes>
   </test> <!-- marketing(failed) -->
 </suite> <!-- Failed suite [VtigerTesting] -->

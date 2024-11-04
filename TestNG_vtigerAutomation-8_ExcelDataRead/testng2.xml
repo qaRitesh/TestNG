@@ -3,7 +3,7 @@
 <suite name="VtigerTesting" verbose="8">
 
 <listeners>
-<listener class-name="com.mondh.vtiger.IRetryAnalyzreTestCase"></listener>
+<listener class-name="com.mondh.vtiger.genericyCodes.AnnotationTransformer"></listener>
 </listeners>
 
 <!-- class -->

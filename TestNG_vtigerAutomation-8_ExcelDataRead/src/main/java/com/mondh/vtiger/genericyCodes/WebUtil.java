@@ -92,19 +92,19 @@ public class WebUtil {
 			ChromeOptions cp = new ChromeOptions();
 			cp.addArguments("start-maximized");
 			driver = new ChromeDriver(cp);
-			System.out.println("Chrome Browser Launched Successfully.");
+			extTest.log(Status.INFO, "Chrome Browser Launched Successfully.");
 		} else if (browser.equalsIgnoreCase("FirfoxBrowser")) {
 			FirefoxOptions cp = new FirefoxOptions();
 			cp.addArguments("start-maximized");
 			driver = new FirefoxDriver(cp);
-			System.out.println("Firefox Browser Launched Successfully.");
+			extTest.log(Status.INFO, "Firefox Browser Launched Successfully.");
 		} else if (browser.equalsIgnoreCase("EdgeBrowser")) {
 			EdgeOptions cp = new EdgeOptions();
 			cp.addArguments("start-maximized");
 			driver = new EdgeDriver(cp);
-			System.out.println("Microsoft Edge Browser Launched Successfully.");
+			extTest.log(Status.INFO, "Microsoft Edge Browser Launched Successfully.");
 		} else {
-			System.out.println("Broswer can't be Launch:");
+			extTest.log(Status.INFO, "Broswer can't be Launch:");
 		}
 
 	}
@@ -113,10 +113,10 @@ public class WebUtil {
 	public void openUrl(String Url) {
 		try {
 			driver.get(Url);
-			System.out.println("The given url:- " + Url + " has opened Successfully");
+			extTest.log(Status.INFO, "The given url:- " + Url + " has opened Successfully");
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("The given url:- " + Url + " hasn't opened Successfully");
+			extTest.log(Status.INFO, "The given url:- " + Url + " hasn't opened Successfully");
 		}
 	}
 

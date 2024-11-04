@@ -3,6 +3,8 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="true"/>
 	<list key="searchhistory">
+		<item value="sendkeys"/>
+		<item value="select"/>
 		<item value="topsave"/>
 		<item value="save"/>
 		<item value=") driver"/>

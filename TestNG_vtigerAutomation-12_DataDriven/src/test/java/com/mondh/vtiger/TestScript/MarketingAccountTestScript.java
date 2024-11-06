@@ -22,10 +22,25 @@ public class MarketingAccountTestScript extends BaseTest {
 	private CommonReusableCode comm;
 	DataUtile data=new DataUtile();
 
+	@DataProvider()
+	public Object[][] getData() {
+		
+		List<Map<String,String>>testCaseDataMapList=data.getAllTestCaseData("VT001",1);
+		int matchingTcIDCount=testCaseDataMapList.size();
+		
+		Object[][] dim2Arr=new Object[matchingTcIDCount][2];
+		
+		for(int i=0;i<=matchingTcIDCount-1;i++) {
+			dim2Arr[i][0] =testCaseDataMapList.get(i);
+	}
+	return dim2Arr;
+	}
+	
+	
 	
 //Create_Account:	
-	@Test(priority =1 , groups = { "Smoke"})
-	public void verifyVT001CreateAccounts() throws Exception {
+	@Test(priority =1 , groups = { "Smoke"},dataProvider = "getData")
+	public void verifyVT001CreateAccounts(Object data) throws Exception {
 		gm.getExtTest().log(Status.INFO,"verifyVT001CreateAccounts TestCase Started");
 		comm = new CommonReusableCode(gm);
 		// MarketingAccount_LeandingPage:
@@ -33,17 +48,18 @@ public class MarketingAccountTestScript extends BaseTest {
 		comm.createButton();
 		// marketingCreatePage:
 		MarketingAccountCreateAccountPage marketingCreatePage = new MarketingAccountCreateAccountPage(gm);
-		List<Map<String,String>>testCaseDataMapList=data.getAllTestCaseData("VT001", 2);
-		for(int i=0;i<=testCaseDataMapList.size()-1;i++) {
-			Map<String,String>testCaseDataMap=testCaseDataMapList.get(i);
+		
+	//	List<Map<String,String>>testCaseDataMapList=data.getAllTestCaseData("VT001", 2);
+	//	for(int i=0;i<=testCaseDataMapList.size()-1;i++) {
+			Map<String,String>testCaseDataMap=(Map<String,String>) data;
 			marketingCreatePage.fillAccountInformationDeatils(testCaseDataMap);
 			comm.topSaveButton();
 			// AccountInformationPage:
 			MarketingAccountInformationPage marketinginformations = new MarketingAccountInformationPage(gm);
 			marketinginformations.goToMarketingAccountSubmodule();
 			comm.checkDataStoreorNot("Account Name", testCaseDataMap);
-			comm.createButton();
-		}
+		//	comm.createButton();
+		//}
 		gm.getExtTest().log(Status.INFO,"verifyVT001CreateAccounts TestCase Completed");
 
 	}

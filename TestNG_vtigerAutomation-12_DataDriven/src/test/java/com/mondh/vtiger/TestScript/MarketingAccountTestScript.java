@@ -33,14 +33,19 @@ public class MarketingAccountTestScript extends BaseTest {
 		comm.createButton();
 		// marketingCreatePage:
 		MarketingAccountCreateAccountPage marketingCreatePage = new MarketingAccountCreateAccountPage(gm);
-		Map<String,String>testCaseDataMap=data.getTestCaseData("VT001", 2);
-		marketingCreatePage.fillAccountInformationDeatils(testCaseDataMap);
-		comm.topSaveButton();
-		// AccountInformationPage:
-		MarketingAccountInformationPage marketinginformations = new MarketingAccountInformationPage(gm);
-		marketinginformations.goToMarketingAccountSubmodule();
-		comm.checkDataStoreorNot("Account Name", testCaseDataMap);
+		List<Map<String,String>>testCaseDataMapList=data.getAllTestCaseData("VT001", 2);
+		for(int i=0;i<=testCaseDataMapList.size()-1;i++) {
+			Map<String,String>testCaseDataMap=testCaseDataMapList.get(i);
+			marketingCreatePage.fillAccountInformationDeatils(testCaseDataMap);
+			comm.topSaveButton();
+			// AccountInformationPage:
+			MarketingAccountInformationPage marketinginformations = new MarketingAccountInformationPage(gm);
+			marketinginformations.goToMarketingAccountSubmodule();
+			comm.checkDataStoreorNot("Account Name", testCaseDataMap);
+			comm.createButton();
+		}
 		gm.getExtTest().log(Status.INFO,"verifyVT001CreateAccounts TestCase Completed");
+
 	}
 
 //updata_data:	

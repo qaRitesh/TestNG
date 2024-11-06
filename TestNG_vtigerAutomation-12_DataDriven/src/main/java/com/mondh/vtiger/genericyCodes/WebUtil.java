@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
@@ -55,19 +56,21 @@ import lombok.Getter;
 import lombok.Setter;
 import net.bytebuddy.utility.RandomString;
 
-@Getter @Setter
+@Getter
+@Setter
 public class WebUtil {
 
 	// generic methods: -Application independent methods.
 	// multiple time use.
 	private WebUtil() {
-		
+
 	}
 
 	private WebDriver driver;
 	private static WebUtil webUtil;
 	private ExtentTest extTest;
-	private Properties	prop;
+	private Properties prop;
+
 //Functionality ==== locater.	
 	// Object:
 	public static WebUtil getObject() {
@@ -76,12 +79,12 @@ public class WebUtil {
 		}
 		return webUtil;
 	}
-	
-	//EctentTest Object pass:
+
+	// EctentTest Object pass:
 //	public void setExtentTestObject(ExtentTest extTest) {
 //		this.extTest=extTest;
 //	}
-	
+
 //	before using lombok jar:
 //	public WebDriver getDriver() {
 //        return this.driver;
@@ -180,13 +183,13 @@ public class WebUtil {
 //Lunch Driver Close:
 	public void driverClose() {
 		driver.close();
-		extTest.log(Status.INFO,"Lunch Driver are Close.");
+		extTest.log(Status.INFO, "Lunch Driver are Close.");
 	}
 
 //Lunch Browser Quit:
 	public void driverQuit() {
 		driver.quit();
-		extTest.log(Status.INFO,"Lunch Driver are Quit.");
+		extTest.log(Status.INFO, "Lunch Driver are Quit.");
 
 	}
 
@@ -307,16 +310,16 @@ public class WebUtil {
 		String elementName = weObj.getAccessibleName();
 		try {
 			weObj.clear();
-			extTest.log(Status.INFO,elementName + " TextBox clear successfully ");
+			extTest.log(Status.INFO, elementName + " TextBox clear successfully ");
 		} catch (ElementNotInteractableException e) {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		} catch (StaleElementReferenceException e) {
 			weObj.clear();
-			extTest.log(Status.INFO,elementName + " TextBox clear successfully ");
+			extTest.log(Status.INFO, elementName + " TextBox clear successfully ");
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,elementName + " textbox can't clear");
+			extTest.log(Status.FAIL, elementName + " textbox can't clear");
 		}
 	}
 
@@ -328,14 +331,14 @@ public class WebUtil {
 		try {
 			weObj.clear();
 			weObj.sendKeys(inputvalue);
-			extTest.log(Status.INFO,inputvalue + " value entered in " + elementName + " textbox successfully");
+			extTest.log(Status.INFO, inputvalue + " value entered in " + elementName + " textbox successfully");
 		} catch (ElementNotInteractableException e) {
 			JavascriptExecutor jse = (JavascriptExecutor) driver;
 			jse.executeScript("argument[0].value='" + inputvalue + "'", weObj);
-			extTest.log(Status.INFO,inputvalue + " value entered in" + elementName + " textbox successfully");
+			extTest.log(Status.INFO, inputvalue + " value entered in" + elementName + " textbox successfully");
 		} catch (StaleElementReferenceException e) {
 			weObj.sendKeys(inputvalue);
-			extTest.log(Status.INFO,inputvalue + " value entered in" + elementName + " textbox successfully");
+			extTest.log(Status.INFO, inputvalue + " value entered in" + elementName + " textbox successfully");
 		} catch (Exception e) {
 			e.printStackTrace();
 			extTest.log(Status.FAIL, inputvalue + "value not entered in" + elementName + "textbox successfully");
@@ -351,14 +354,14 @@ public class WebUtil {
 		// click:
 		try {
 			weObj.click();
-			extTest.log(Status.INFO,elementName + " Click successfully.");
+			extTest.log(Status.INFO, elementName + " Click successfully.");
 		} catch (ElementClickInterceptedException e) {
 			JavascriptExecutor jse = (JavascriptExecutor) driver;
 			jse.executeScript("argument[0].click()", weObj);
-			extTest.log(Status.INFO,elementName + " Click successfully.");
+			extTest.log(Status.INFO, elementName + " Click successfully.");
 		} catch (StaleElementReferenceException e) {
 			weObj.click();
-			extTest.log(Status.INFO,elementName + " Click successfully.");
+			extTest.log(Status.INFO, elementName + " Click successfully.");
 		} catch (Exception e) {
 			e.printStackTrace();
 			extTest.log(Status.FAIL, elementName + " not click successfully.");
@@ -372,13 +375,13 @@ public class WebUtil {
 		String innerText = null;
 		try {
 			innerText = weObj.getText();
-			extTest.log(Status.INFO,innerText + " -innertext of " + elementName + " got successfully.");
+			extTest.log(Status.INFO, innerText + " -innertext of " + elementName + " got successfully.");
 		} catch (StaleElementReferenceException e) {
 			innerText = weObj.getText();
-			extTest.log(Status.INFO,innerText + " -innertext of " + elementName + " got successfully.");
+			extTest.log(Status.INFO, innerText + " -innertext of " + elementName + " got successfully.");
 
 		} catch (Exception e) {
-			extTest.log(Status.FAIL,innerText+" not  Found.");
+			extTest.log(Status.FAIL, innerText + " not  Found.");
 			throw e;
 		}
 		return innerText;
@@ -392,18 +395,18 @@ public class WebUtil {
 			Dimension size = weObj.getSize();
 			int h = size.height;
 			int w = size.width;
-			extTest.log(Status.INFO,elementName + " height is " + h + " and width is " + w);
+			extTest.log(Status.INFO, elementName + " height is " + h + " and width is " + w);
 
 		} catch (StaleElementReferenceException e) {
 
 			Dimension size = weObj.getSize();
 			int h = size.height;
 			int w = size.width;
-			extTest.log(Status.INFO,elementName + " height is " + h + " and width is " + w);
+			extTest.log(Status.INFO, elementName + " height is " + h + " and width is " + w);
 		} catch (Exception e) {
 
 			e.printStackTrace();
-			extTest.log(Status.FAIL ,elementName + " height and width can't find successfully");
+			extTest.log(Status.FAIL, elementName + " height and width can't find successfully");
 		}
 	}
 
@@ -415,18 +418,18 @@ public class WebUtil {
 			Point location = weObj.getLocation();
 			int x = location.getX();
 			int y = location.getY();
-			extTest.log(Status.INFO,elementName + "  screen size x position  is " + x + " and y posyion is " + y);
+			extTest.log(Status.INFO, elementName + "  screen size x position  is " + x + " and y posyion is " + y);
 
 		} catch (StaleElementReferenceException e) {
 			Point location = weObj.getLocation();
 			int x = location.getX();
 			int y = location.getY();
-			extTest.log(Status.INFO,elementName + "  screen size x position  is " + x + " and y posyion is " + y);
+			extTest.log(Status.INFO, elementName + "  screen size x position  is " + x + " and y posyion is " + y);
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
-			extTest.log(Status.INFO,elementName + "  postion can't find successfully");
+			extTest.log(Status.INFO, elementName + "  postion can't find successfully");
 		}
 	}
 
@@ -438,22 +441,22 @@ public class WebUtil {
 		try {
 			auctal = weObj.isEnabled();
 			if (auctal == true) {
-				extTest.log(Status.PASS,elementName + " it is Enebal your screen");
+				extTest.log(Status.PASS, elementName + " it is Enebal your screen");
 			} else {
-				extTest.log(Status.FAIL,elementName + " it is Enebal your screen");
+				extTest.log(Status.FAIL, elementName + " it is Enebal your screen");
 			}
 
 		} catch (StaleElementReferenceException e) {
 			auctal = weObj.isEnabled();
 			if (auctal == true) {
-				extTest.log(Status.PASS,elementName + " it is Enebal your screen");
+				extTest.log(Status.PASS, elementName + " it is Enebal your screen");
 			} else {
-				extTest.log(Status.FAIL,elementName + " it is Enebal your screen");
+				extTest.log(Status.FAIL, elementName + " it is Enebal your screen");
 			}
 		} catch (Exception e) {
 
 			e.printStackTrace();
-			extTest.log(Status.FAIL,elementName + " it is Enebal your screen");
+			extTest.log(Status.FAIL, elementName + " it is Enebal your screen");
 		}
 		return auctal;
 	}
@@ -466,22 +469,22 @@ public class WebUtil {
 		try {
 			auctal = weObj.isDisplayed();
 			if (auctal == true) {
-				extTest.log(Status.PASS,elementName + " it is Displayed Ui your screen");
+				extTest.log(Status.PASS, elementName + " it is Displayed Ui your screen");
 			} else {
-				extTest.log(Status.FAIL,elementName + " it is Displayed Ui your screen");
+				extTest.log(Status.FAIL, elementName + " it is Displayed Ui your screen");
 			}
 
 		} catch (StaleElementReferenceException e) {
 
 			auctal = weObj.isEnabled();
 			if (auctal == true) {
-				extTest.log(Status.PASS,elementName + " it is Displayed Ui your screen");
+				extTest.log(Status.PASS, elementName + " it is Displayed Ui your screen");
 			} else {
-				extTest.log(Status.FAIL,elementName + " it is Displayed Ui your screen");
+				extTest.log(Status.FAIL, elementName + " it is Displayed Ui your screen");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,elementName + " it is Displayed Ui your screen");
+			extTest.log(Status.FAIL, elementName + " it is Displayed Ui your screen");
 		}
 		return auctal;
 	}
@@ -494,49 +497,53 @@ public class WebUtil {
 		try {
 			auctal = weObj.isSelected();
 			if (auctal == true) {
-				extTest.log(Status.PASS,elementName + " checkbox is  unchecked");
+				extTest.log(Status.PASS, elementName + " checkbox is  unchecked");
 			} else {
-				extTest.log(Status.FAIL,elementName + " checkbox is not  unchecked");
+				extTest.log(Status.FAIL, elementName + " checkbox is not  unchecked");
 			}
 
 		} catch (StaleElementReferenceException e) {
 			auctal = weObj.isEnabled();
 			if (auctal == true) {
-				extTest.log(Status.PASS,elementName + " checkbox is  unchecked");
+				extTest.log(Status.PASS, elementName + " checkbox is  unchecked");
 			} else {
-				extTest.log(Status.FAIL,elementName + " checkbox is not  unchecked");
+				extTest.log(Status.FAIL, elementName + " checkbox is not  unchecked");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,elementName + " checkbox is not  unchecked");
+			extTest.log(Status.FAIL, elementName + " checkbox is not  unchecked");
 		}
 		return auctal;
 	}
 
-	
 //getAttributevalue:
-	public String getAttributevalue(WebElement weObj, String valueText,String attributType) {
+	public String getAttributevalue(WebElement weObj, String valueText, String attributType) {
 
 		String elementName = weObj.getAccessibleName();
 		String attributeValue = null;
 		try {
 			attributeValue = weObj.getAttribute(attributType);
 			if (attributeValue.equalsIgnoreCase(valueText)) {
-				extTest.log(Status.PASS,elementName +" "+attributType +"attribute value is " + valueText + " correct");
+				extTest.log(Status.PASS,
+						elementName + " " + attributType + "attribute value is " + valueText + " correct");
 			} else {
-				extTest.log(Status.FAIL,elementName +" "+attributType +"attribute value is " + valueText + " can't correct");
+				extTest.log(Status.FAIL,
+						elementName + " " + attributType + "attribute value is " + valueText + " can't correct");
 			}
 		} catch (StaleElementReferenceException e) {
 			attributeValue = weObj.getAttribute("value");
 			if (attributeValue.equalsIgnoreCase(valueText)) {
-				extTest.log(Status.PASS,elementName +" "+attributType +"attribute value is " + valueText + " correct");
+				extTest.log(Status.PASS,
+						elementName + " " + attributType + "attribute value is " + valueText + " correct");
 			} else {
-				extTest.log(Status.FAIL,elementName +" "+attributType +"attribute value is " + valueText + " can't correct");
+				extTest.log(Status.FAIL,
+						elementName + " " + attributType + "attribute value is " + valueText + " can't correct");
 			}
 		} catch (Exception e) {
 
 			e.printStackTrace();
-			extTest.log(Status.FAIL,elementName +" "+attributType +"attribute value is " + valueText + " can't correct");
+			extTest.log(Status.FAIL,
+					elementName + " " + attributType + "attribute value is " + valueText + " can't correct");
 		}
 		return attributeValue;
 	}
@@ -565,7 +572,7 @@ public class WebUtil {
 		int itemcount = 0;
 
 		itemcount = weListColumn.size();
-		extTest.log(Status.INFO,"Total " + itemcount + " Row ");
+		extTest.log(Status.INFO, "Total " + itemcount + " Row ");
 
 		return itemcount;
 	}
@@ -578,7 +585,7 @@ public class WebUtil {
 		List<WebElement> weListColumn = driver.findElements(By.xpath(ame + "//tr[1]//td"));
 		int itemcount = 0;
 		itemcount = weListColumn.size();
-		extTest.log(Status.INFO,"Total " + itemcount + " Columns ");
+		extTest.log(Status.INFO, "Total " + itemcount + " Columns ");
 
 		return itemcount;
 	}
@@ -716,10 +723,11 @@ public class WebUtil {
 
 //tableitemClick:
 	public void tableItemClick(String tableName, int columnNo, String clicktext) {
-		WebElement tablealue = driver.findElement(By.xpath(tableName + "//tr//td[" + columnNo + "]/a[text()='" + clicktext + "']"));
-		String elementName=tablealue.getAccessibleName();
+		WebElement tablealue = driver
+				.findElement(By.xpath(tableName + "//tr//td[" + columnNo + "]/a[text()='" + clicktext + "']"));
+		String elementName = tablealue.getAccessibleName();
 		tablealue.click();
-		extTest.log(Status.INFO, clicktext +" ElementName Click");
+		extTest.log(Status.INFO, clicktext + " ElementName Click");
 	}
 
 //-----------------------------------Actions:-----------------------------------------------		
@@ -732,16 +740,18 @@ public class WebUtil {
 		// mouseover:
 		try {
 			mouseover.moveToElement(weObj).build().perform();
-			extTest.log(Status.INFO,elementName + " mouseover successfully.");
+			extTest.log(Status.INFO, elementName + " mouseover successfully.");
 		} catch (ElementNotInteractableException e) {
 			JavascriptExecutor jse = (JavascriptExecutor) driver;
-			jse.executeScript("if(document.createEvent){var evObj = document.createEvent('MouseEvents');evObj.initEvent('mouseover',true, false); arguments[0].dispatchEvent(evObj);} else if(document.createEventObject) { arguments[0].fireEvent('onmouseover');}",weObj);
-			extTest.log(Status.INFO,elementName + " mouseover successfully.");
+			jse.executeScript(
+					"if(document.createEvent){var evObj = document.createEvent('MouseEvents');evObj.initEvent('mouseover',true, false); arguments[0].dispatchEvent(evObj);} else if(document.createEventObject) { arguments[0].fireEvent('onmouseover');}",
+					weObj);
+			extTest.log(Status.INFO, elementName + " mouseover successfully.");
 
 		} catch (StaleElementReferenceException e) {
 			elementName = weObj.getAccessibleName();
 			mouseover.moveToElement(weObj).build().perform();
-			extTest.log(Status.INFO,elementName + " mouseover successfully.");
+			extTest.log(Status.INFO, elementName + " mouseover successfully.");
 		} catch (Exception e) {
 			e.printStackTrace();
 			extTest.log(Status.FAIL, elementName + " mouseover not successfully.");
@@ -756,16 +766,16 @@ public class WebUtil {
 		// mouseClick:
 		try {
 			mouseClick.sendKeys(weObj).build().perform();
-			extTest.log(Status.INFO,elementName + " mouse Click successfully.");
+			extTest.log(Status.INFO, elementName + " mouse Click successfully.");
 		} catch (ElementNotInteractableException e) {
 			JavascriptExecutor jse = (JavascriptExecutor) driver;
 			jse.executeScript("argument[0].value(" + weObj + ")", weObj);
-			extTest.log(Status.INFO,elementName + " mouse Click successfully.");
+			extTest.log(Status.INFO, elementName + " mouse Click successfully.");
 
 		} catch (StaleElementReferenceException e) {
 			elementName = weObj.getAccessibleName();
 			mouseClick.sendKeys(weObj).build().perform();
-			extTest.log(Status.INFO,elementName + " mouse Click successfully.");
+			extTest.log(Status.INFO, elementName + " mouse Click successfully.");
 		} catch (Exception e) {
 			e.printStackTrace();
 			extTest.log(Status.FAIL, elementName + " mouse click can't successfully.");
@@ -780,19 +790,19 @@ public class WebUtil {
 		// mouseClick:
 		try {
 			mouseClick.click(weObj).build().perform();
-			extTest.log(Status.INFO,elementName + " mouse Click successfully.");
+			extTest.log(Status.INFO, elementName + " mouse Click successfully.");
 		} catch (ElementNotInteractableException e) {
 			JavascriptExecutor jse = (JavascriptExecutor) driver;
 			jse.executeScript("argument[0].click()", weObj);
-			extTest.log(Status.INFO,elementName + " mouse Click successfully.");
+			extTest.log(Status.INFO, elementName + " mouse Click successfully.");
 
 		} catch (StaleElementReferenceException e) {
 			elementName = weObj.getAccessibleName();
 			mouseClick.click(weObj).build().perform();
-			extTest.log(Status.INFO,elementName + " mouse Click successfully.");
+			extTest.log(Status.INFO, elementName + " mouse Click successfully.");
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,elementName + " mouse click can't successfully.");
+			extTest.log(Status.FAIL, elementName + " mouse click can't successfully.");
 		}
 	}
 
@@ -804,16 +814,16 @@ public class WebUtil {
 		// mouseClick:
 		try {
 			mouseRClick.contextClick(weObj).build().perform();
-			extTest.log(Status.INFO,elementName + " mouse right Click successfully.");
+			extTest.log(Status.INFO, elementName + " mouse right Click successfully.");
 		} catch (ElementNotInteractableException e) {
 			JavascriptExecutor jse = (JavascriptExecutor) driver;
 			jse.executeScript("    ", weObj);
-			extTest.log(Status.INFO,elementName + " mouse right click successfully.");
+			extTest.log(Status.INFO, elementName + " mouse right click successfully.");
 
 		} catch (StaleElementReferenceException e) {
 			elementName = weObj.getAccessibleName();
 			mouseRClick.contextClick(weObj).build().perform();
-			extTest.log(Status.INFO,elementName + " mouse right Click successfully.");
+			extTest.log(Status.INFO, elementName + " mouse right Click successfully.");
 		} catch (Exception e) {
 			e.printStackTrace();
 			extTest.log(Status.FAIL, elementName + " mouse right click can't successfully.");
@@ -828,18 +838,18 @@ public class WebUtil {
 		// Drag And Drop:
 		try {
 			mouseDd.dragAndDrop(weObj1, weObj2).build().perform();
-			extTest.log(Status.INFO,elementName + " mouse Drag And Drop successfully.");
+			extTest.log(Status.INFO, elementName + " mouse Drag And Drop successfully.");
 		} catch (ElementNotInteractableException e) {
 			JavascriptExecutor jse = (JavascriptExecutor) driver;
 
 			jse.executeScript("var dropTarget = jQuery( " + weObj1 + "); jQuery( " + weObj2
 					+ " ).simulate('drag', { dropTarget: dropTarget });");
-			extTest.log(Status.INFO,elementName + " mouse Drag And Drop successfully.");
+			extTest.log(Status.INFO, elementName + " mouse Drag And Drop successfully.");
 
 		} catch (StaleElementReferenceException e) {
 			elementName = weObj1.getAccessibleName();
 			mouseDd.dragAndDrop(weObj1, weObj2).build().perform();
-			extTest.log(Status.INFO,elementName + " mouse Drag And Drop successfully.");
+			extTest.log(Status.INFO, elementName + " mouse Drag And Drop successfully.");
 		} catch (Exception e) {
 			e.printStackTrace();
 			extTest.log(Status.FAIL, elementName + "  Drag and Drop  can't successfully.");
@@ -858,14 +868,14 @@ public class WebUtil {
 		try {
 			weselectIntem = selObj.getFirstSelectedOption();
 			acutalText = weselectIntem.getText();
-			extTest.log(Status.INFO,elementName+acutalText + " First Select Option ");
+			extTest.log(Status.INFO, elementName + acutalText + " First Select Option ");
 		} catch (StaleElementReferenceException e) {
 			elementName = weObj.getAccessibleName();
 			weselectIntem = selObj.getFirstSelectedOption();
 			acutalText = weselectIntem.getText();
-			extTest.log(Status.INFO,elementName+acutalText + " Auto First Select Option ");
+			extTest.log(Status.INFO, elementName + acutalText + " Auto First Select Option ");
 		} catch (Exception e) {
-			extTest.log(Status.FAIL,elementName+acutalText + " can't First Select Option ");
+			extTest.log(Status.FAIL, elementName + acutalText + " can't First Select Option ");
 			throw e;
 		}
 		return acutalText;
@@ -884,18 +894,18 @@ public class WebUtil {
 		try {
 			List<WebElement> number = OptionCount.getOptions();
 			itemcount = number.size();
-			extTest.log(Status.INFO,elementName + " " + itemcount + " total Options");
+			extTest.log(Status.INFO, elementName + " " + itemcount + " total Options");
 
 		} catch (StaleElementReferenceException e) {
 			elementName = weObj.getAccessibleName();
 			OptionCount = new Select(weObj);
 			List<WebElement> number = OptionCount.getOptions();
 			itemcount = number.size();
-			extTest.log(Status.INFO,elementName + " " + itemcount + " total Options");
+			extTest.log(Status.INFO, elementName + " " + itemcount + " total Options");
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,"Failed can't find select Options");
+			extTest.log(Status.FAIL, "Failed can't find select Options");
 		}
 		return itemcount;
 	}
@@ -925,7 +935,7 @@ public class WebUtil {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,"Failed can't find select text Options");
+			extTest.log(Status.FAIL, "Failed can't find select text Options");
 		}
 		return listOptionText;
 	}
@@ -937,17 +947,17 @@ public class WebUtil {
 		try {
 			boolean result = sb.isMultiple();
 			if (result == true) {
-				extTest.log(Status.PASS,"Yes :This is multiple select Allow ");
+				extTest.log(Status.PASS, "Yes :This is multiple select Allow ");
 			} else {
-				extTest.log(Status.FAIL,"No :This is Single select Allow ");
+				extTest.log(Status.FAIL, "No :This is Single select Allow ");
 			}
 		} catch (StaleElementReferenceException e) {
 			elementName = weObj.getAccessibleName();
 			boolean result = sb.isMultiple();
 			if (result == true) {
-				extTest.log(Status.PASS,"Yes :This is multiple select Allow ");
+				extTest.log(Status.PASS, "Yes :This is multiple select Allow ");
 			} else {
-				extTest.log(Status.FAIL,"No :This is Single select Allow ");
+				extTest.log(Status.FAIL, "No :This is Single select Allow ");
 			}
 		}
 	}
@@ -959,7 +969,7 @@ public class WebUtil {
 		Select sb = new Select(weObj);
 		try {
 			sb.selectByVisibleText(selectText);
-			extTest.log(Status.INFO,selectText + " innerText option select successfully");
+			extTest.log(Status.INFO, selectText + " innerText option select successfully");
 		} catch (ElementNotInteractableException e) {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("argument[0].click()", weObj);
@@ -969,9 +979,9 @@ public class WebUtil {
 			elementName = weObj.getAccessibleName();
 			sb = new Select(weObj);
 			sb.selectByVisibleText(selectText);
-			extTest.log(Status.INFO,selectText + " innerText option select successfully");
+			extTest.log(Status.INFO, selectText + " innerText option select successfully");
 		} catch (Exception e) {
-			extTest.log(Status.FAIL,"Failed: " + selectText + " innerText option  not select successfully");
+			extTest.log(Status.FAIL, "Failed: " + selectText + " innerText option  not select successfully");
 			throw e;
 		}
 	}
@@ -994,7 +1004,7 @@ public class WebUtil {
 				}
 			}
 			sb.selectByIndex(indexnumber);
-			extTest.log(Status.INFO,selectText + " innerText option select successfully");
+			extTest.log(Status.INFO, selectText + " innerText option select successfully");
 		} catch (ElementNotInteractableException e) {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("argument[0].click()", weObj);
@@ -1013,9 +1023,9 @@ public class WebUtil {
 				}
 			}
 			sb.selectByIndex(indexnumber);
-			extTest.log(Status.INFO,selectText + " innerText option select successfully");
+			extTest.log(Status.INFO, selectText + " innerText option select successfully");
 		} catch (Exception e) {
-			extTest.log(Status.FAIL,"Failed: " + selectText + " innerText option  not select successfully");
+			extTest.log(Status.FAIL, "Failed: " + selectText + " innerText option  not select successfully");
 			throw e;
 		}
 	}
@@ -1027,7 +1037,7 @@ public class WebUtil {
 		Select sb = new Select(weObj);
 		try {
 			sb.selectByValue(selectTextvalue);
-			extTest.log(Status.INFO,selectTextvalue + " attribute_value option select successfully");
+			extTest.log(Status.INFO, selectTextvalue + " attribute_value option select successfully");
 		} catch (ElementNotInteractableException e) {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("argument[0].click()", weObj);
@@ -1038,9 +1048,9 @@ public class WebUtil {
 			elementName = weObj.getAccessibleName();
 			sb = new Select(weObj);
 			sb.selectByValue(selectTextvalue);
-			extTest.log(Status.INFO,selectTextvalue + " attribute_value option select successfully");
+			extTest.log(Status.INFO, selectTextvalue + " attribute_value option select successfully");
 		} catch (Exception e) {
-			extTest.log(Status.FAIL,"Failed: " + selectTextvalue + " attribute_value option  not select successfully");
+			extTest.log(Status.FAIL, "Failed: " + selectTextvalue + " attribute_value option  not select successfully");
 			throw e;
 		}
 	}
@@ -1064,7 +1074,7 @@ public class WebUtil {
 				}
 			}
 			sb.selectByIndex(indexnumber);
-			extTest.log(Status.INFO,selectTextvalue + " attribute_value option select successfully");
+			extTest.log(Status.INFO, selectTextvalue + " attribute_value option select successfully");
 		} catch (ElementNotInteractableException e) {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("argument[0].click()", weObj);
@@ -1085,9 +1095,9 @@ public class WebUtil {
 				}
 			}
 			sb.selectByIndex(indexnumber);
-			extTest.log(Status.INFO,selectTextvalue + " attribute_value option select successfully");
+			extTest.log(Status.INFO, selectTextvalue + " attribute_value option select successfully");
 		} catch (Exception e) {
-			extTest.log(Status.FAIL,"Failed: " + selectTextvalue + " attribute_value option  not select successfully");
+			extTest.log(Status.FAIL, "Failed: " + selectTextvalue + " attribute_value option  not select successfully");
 			throw e;
 		}
 	}
@@ -1100,7 +1110,7 @@ public class WebUtil {
 		Select sb = new Select(weObj);
 		try {
 			sb.selectByIndex(selectvalueindex);
-			extTest.log(Status.INFO,selectvalueindex + " option selected successfully");
+			extTest.log(Status.INFO, selectvalueindex + " option selected successfully");
 		} catch (ElementNotInteractableException e) {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("argument[0]", weObj);
@@ -1111,13 +1121,13 @@ public class WebUtil {
 			elementName = weObj.getAccessibleName();
 			sb = new Select(weObj);
 			sb.selectByIndex(selectvalueindex);
-			extTest.log(Status.INFO,selectvalueindex + " option selected successfully");
+			extTest.log(Status.INFO, selectvalueindex + " option selected successfully");
 		} catch (Exception e) {
-			extTest.log(Status.FAIL,"Failed: " + selectvalueindex + " option  not selected successfully");
+			extTest.log(Status.FAIL, "Failed: " + selectvalueindex + " option  not selected successfully");
 			throw e;
 		}
-	}	
-	
+	}
+
 //--------------------------------Switch_window----------------------------------					
 // switchTowindowByTitle:
 	public String getSwitchTowindowByTitle(String expectedTitle) {
@@ -1129,7 +1139,8 @@ public class WebUtil {
 				driver.switchTo().window(handle);
 				windowTitle = driver.getTitle();
 				if (windowTitle.equalsIgnoreCase(expectedTitle)) {
-					extTest.log(Status.INFO,"Passed: Acutal and expected windowTitle match & Your window driver has change.");
+					extTest.log(Status.INFO,
+							"Passed: Acutal and expected windowTitle match & Your window driver has change.");
 					break;
 				}
 			}
@@ -1140,13 +1151,15 @@ public class WebUtil {
 				windowTitle = driver.getTitle();
 
 				if (windowTitle.equalsIgnoreCase(expectedTitle)) {
-					extTest.log(Status.INFO,"Passed: Acutal and expected windowTitle match & Your window driver has change.");
+					extTest.log(Status.INFO,
+							"Passed: Acutal and expected windowTitle match & Your window driver has change.");
 					break;
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,"failed: Acutal and expected windowTitle can't be changed & your window driver has not been changed.");
+			extTest.log(Status.FAIL,
+					"failed: Acutal and expected windowTitle can't be changed & your window driver has not been changed.");
 		}
 		return windowTitle;
 
@@ -1162,7 +1175,8 @@ public class WebUtil {
 				driver.switchTo().window(handle);
 				windowTitle = driver.getTitle();
 				if (windowTitle.contains(expectedTitle)) {
-					extTest.log(Status.INFO,"Passed: Acutal and expected windowTitle match & Your window driver has change.");
+					extTest.log(Status.INFO,
+							"Passed: Acutal and expected windowTitle match & Your window driver has change.");
 					break;
 				}
 			}
@@ -1172,13 +1186,15 @@ public class WebUtil {
 				driver.switchTo().window(handle);
 				windowTitle = driver.getTitle();
 				if (windowTitle.contains(expectedTitle)) {
-					extTest.log(Status.INFO,"Passed: Acutal and expected windowTitle match & Your window driver has change.");
+					extTest.log(Status.INFO,
+							"Passed: Acutal and expected windowTitle match & Your window driver has change.");
 					break;
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,"failed: Acutal and expected windowTitle can't be changed & your window driver has not been changed.");
+			extTest.log(Status.FAIL,
+					"failed: Acutal and expected windowTitle can't be changed & your window driver has not been changed.");
 		}
 		return windowTitle;
 
@@ -1194,7 +1210,8 @@ public class WebUtil {
 				driver.switchTo().window(handle);
 				windowUrl = driver.getCurrentUrl();
 				if (windowUrl.equalsIgnoreCase(expectedUrl)) {
-					extTest.log(Status.INFO,"Passed: Acutal and expected windowUrl match & Your window driver has change.");
+					extTest.log(Status.INFO,
+							"Passed: Acutal and expected windowUrl match & Your window driver has change.");
 					break;
 				}
 			}
@@ -1204,16 +1221,19 @@ public class WebUtil {
 				driver.switchTo().window(handle);
 				windowUrl = driver.getTitle();
 				if (windowUrl.equalsIgnoreCase(expectedUrl)) {
-					extTest.log(Status.INFO,"Passed: Acutal and expected windowUrl match & Your window driver has change.");
+					extTest.log(Status.INFO,
+							"Passed: Acutal and expected windowUrl match & Your window driver has change.");
 					break;
 				}
 			}
 		} catch (NoSuchWindowException e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,"failed: Acutal and expected windowUrl can't be changed & your window driver has not been changed.");
+			extTest.log(Status.FAIL,
+					"failed: Acutal and expected windowUrl can't be changed & your window driver has not been changed.");
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,"failed: Acutal and expected windowUrl can't be changed & your window driver has not been changed.");
+			extTest.log(Status.FAIL,
+					"failed: Acutal and expected windowUrl can't be changed & your window driver has not been changed.");
 		}
 		return windowUrl;
 
@@ -1229,7 +1249,8 @@ public class WebUtil {
 				driver.switchTo().window(handle);
 				windowUrl = driver.getCurrentUrl();
 				if (windowUrl.contains(expectedUrl)) {
-					extTest.log(Status.INFO,"Passed: Acutal and expected windowUrl match & Your window driver has change.");
+					extTest.log(Status.INFO,
+							"Passed: Acutal and expected windowUrl match & Your window driver has change.");
 					break;
 				}
 			}
@@ -1239,16 +1260,19 @@ public class WebUtil {
 				driver.switchTo().window(handle);
 				windowUrl = driver.getTitle();
 				if (windowUrl.contains(expectedUrl)) {
-					extTest.log(Status.INFO,"Passed: Acutal and expected windowUrl match & Your window driver has change.");
+					extTest.log(Status.INFO,
+							"Passed: Acutal and expected windowUrl match & Your window driver has change.");
 					break;
 				}
 			}
 		} catch (NoSuchWindowException e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,"failed: Acutal and expected windowUrl can't be changed & your window driver has not been changed.");
+			extTest.log(Status.FAIL,
+					"failed: Acutal and expected windowUrl can't be changed & your window driver has not been changed.");
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,"failed: Acutal and expected windowUrl can't be changed & your window driver has not been changed.");
+			extTest.log(Status.FAIL,
+					"failed: Acutal and expected windowUrl can't be changed & your window driver has not been changed.");
 		}
 		return windowUrl;
 
@@ -1260,13 +1284,13 @@ public class WebUtil {
 
 		try {
 			driver.switchTo().frame(no);
-			extTest.log(Status.INFO,"Pass: Inside the frame.");
+			extTest.log(Status.INFO, "Pass: Inside the frame.");
 		} catch (StaleElementReferenceException e) {
 			driver.switchTo().frame(no);
-			extTest.log(Status.INFO,"Pass: Inside the frame.");
+			extTest.log(Status.INFO, "Pass: Inside the frame.");
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,"Failed: can't been inside the frame.");
+			extTest.log(Status.FAIL, "Failed: can't been inside the frame.");
 		}
 	}
 
@@ -1275,13 +1299,13 @@ public class WebUtil {
 
 		try {
 			driver.switchTo().frame(Nameid);
-			extTest.log(Status.INFO,"Pass: Inside the frame.");
+			extTest.log(Status.INFO, "Pass: Inside the frame.");
 		} catch (StaleElementReferenceException e) {
 			driver.switchTo().frame(Nameid);
-			extTest.log(Status.INFO,"Pass: Inside the frame.");
+			extTest.log(Status.INFO, "Pass: Inside the frame.");
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,"Failed: can't been inside the frame.");
+			extTest.log(Status.FAIL, "Failed: can't been inside the frame.");
 		}
 	}
 
@@ -1290,13 +1314,13 @@ public class WebUtil {
 
 		try {
 			driver.switchTo().frame(weObj);
-			extTest.log(Status.INFO,"Pass: Inside the frame.");
+			extTest.log(Status.INFO, "Pass: Inside the frame.");
 		} catch (StaleElementReferenceException e) {
 			driver.switchTo().frame(weObj);
-			extTest.log(Status.INFO,"Pass: Inside the frame.");
+			extTest.log(Status.INFO, "Pass: Inside the frame.");
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,"Failed: can't been inside the frame.");
+			extTest.log(Status.FAIL, "Failed: can't been inside the frame.");
 		}
 	}
 
@@ -1305,13 +1329,13 @@ public class WebUtil {
 
 		try {
 			driver.switchTo().defaultContent();
-			extTest.log(Status.INFO,"Pass: frame  Exit&Close.");
+			extTest.log(Status.INFO, "Pass: frame  Exit&Close.");
 		} catch (StaleElementReferenceException e) {
 			driver.switchTo().parentFrame();
-			extTest.log(Status.INFO,"Pass: frame  Exit&Close.");
+			extTest.log(Status.INFO, "Pass: frame  Exit&Close.");
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,"Failed: frame has not been Exit&Class.");
+			extTest.log(Status.FAIL, "Failed: frame has not been Exit&Class.");
 		}
 	}
 
@@ -1320,13 +1344,13 @@ public class WebUtil {
 
 		try {
 			driver.switchTo().parentFrame();
-			extTest.log(Status.INFO,"pass: childeframe Exit&Close.");
+			extTest.log(Status.INFO, "pass: childeframe Exit&Close.");
 		} catch (StaleElementReferenceException e) {
 			driver.switchTo().defaultContent();
-			extTest.log(Status.INFO,"pass: childeframe Exit&Close.");
+			extTest.log(Status.INFO, "pass: childeframe Exit&Close.");
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,"failed: childeframe  can't been Exit&Close.");
+			extTest.log(Status.FAIL, "failed: childeframe  can't been Exit&Close.");
 		}
 	}
 
@@ -1335,10 +1359,10 @@ public class WebUtil {
 	public void AlertAccepted() {
 		try {
 			driver.switchTo().alert().accept();
-			extTest.log(Status.INFO,"Alert Accepted Successflly");
+			extTest.log(Status.INFO, "Alert Accepted Successflly");
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,"Alert not Accepted");
+			extTest.log(Status.FAIL, "Alert not Accepted");
 		}
 	}
 
@@ -1346,10 +1370,10 @@ public class WebUtil {
 	public void AlertDismiss() {
 		try {
 			driver.switchTo().alert().dismiss();
-			extTest.log(Status.INFO,"Alert Dismiss Successflly");
+			extTest.log(Status.INFO, "Alert Dismiss Successflly");
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,"Alert not Dismiss");
+			extTest.log(Status.FAIL, "Alert not Dismiss");
 		}
 	}
 
@@ -1358,10 +1382,10 @@ public class WebUtil {
 		String text = null;
 		try {
 			text = driver.switchTo().alert().getText();
-			extTest.log(Status.INFO,"Alert text find Successfully");
+			extTest.log(Status.INFO, "Alert text find Successfully");
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,"Alert text can't find successfully ");
+			extTest.log(Status.FAIL, "Alert text can't find successfully ");
 		}
 		return text;
 	}
@@ -1371,141 +1395,163 @@ public class WebUtil {
 
 		try {
 			driver.switchTo().alert().sendKeys(sendtext);
-			extTest.log(Status.INFO,"Alert SendText  Successfully");
+			extTest.log(Status.INFO, "Alert SendText  Successfully");
 		} catch (Exception e) {
 			e.printStackTrace();
-			extTest.log(Status.FAIL,"Alert SendText can't successfully ");
+			extTest.log(Status.FAIL, "Alert SendText can't successfully ");
 		}
 
 	}
-		
+
 //----------------------myverifyString---------myverifynumber---------------------------------------------------------------	
-		
-		//myverifyString:
-		public void VerifyNumber(String acutalNumber, String expectedNumber) {
 
-	 		if (acutalNumber == expectedNumber) {
-				extTest.log(Status.PASS,"Passed.Actual-- "+ acutalNumber +" && Expected- "+ expectedNumber);
-			} else {
-				extTest.log(Status.FAIL,"Failed.Actual-- "+ acutalNumber +" && Expected- "+ expectedNumber);
-			}		
-				Assert.assertEquals(acutalNumber, expectedNumber);
+	// myverifyString:
+	public void VerifyNumber(String acutalNumber, String expectedNumber) {
+
+		if (acutalNumber == expectedNumber) {
+			extTest.log(Status.PASS, "Passed.Actual-- " + acutalNumber + " && Expected- " + expectedNumber);
+		} else {
+			extTest.log(Status.FAIL, "Failed.Actual-- " + acutalNumber + " && Expected- " + expectedNumber);
 		}
-		
-		//myverifynumber:
-		public void VerifyNumber(int acutalNumber, int expectedNumber) {
+		Assert.assertEquals(acutalNumber, expectedNumber);
+	}
 
-			if (acutalNumber == expectedNumber) {
-				extTest.log(Status.PASS,"Passed.Actual-- "+ acutalNumber +" && Expected- "+ expectedNumber);
-			} else {
-				extTest.log(Status.FAIL,"Failed.Actual-- "+ acutalNumber +" && Expected- "+ expectedNumber);
-			}		
-			SoftAssert	sa=new SoftAssert();			// Soft Assert 
-				sa.assertEquals(acutalNumber, expectedNumber);
-				sa.assertAll();							// Handle,move next line && Show ERROR.
+	// myverifynumber:
+	public void VerifyNumber(int acutalNumber, int expectedNumber) {
+
+		if (acutalNumber == expectedNumber) {
+			extTest.log(Status.PASS, "Passed.Actual-- " + acutalNumber + " && Expected- " + expectedNumber);
+		} else {
+			extTest.log(Status.FAIL, "Failed.Actual-- " + acutalNumber + " && Expected- " + expectedNumber);
 		}
-		
-		//myverifyString:
-			public void VerifyInnerText(WebElement we, String expectedText) {
-				String	acutalText	=we.getText();
-				
-				if (acutalText.equalsIgnoreCase(expectedText)) {
-					extTest.log(Status.PASS,"Passed.Actual-- "+acutalText +" && Expected- "+expectedText);
-				} else {
-					extTest.log(Status.FAIL,"Failed.Actual-- "+acutalText + "&& Expected- "+expectedText);
-				}
-				Assert.assertEquals(acutalText, expectedText);		//Hard Assert:
-			}
+		SoftAssert sa = new SoftAssert(); // Soft Assert
+		sa.assertEquals(acutalNumber, expectedNumber);
+		sa.assertAll(); // Handle,move next line && Show ERROR.
+	}
 
-		//verifyTitle:
-			public void verifyTitle(String expectedTitle) {
-			String	actualTitle=driver.getTitle();
-				if(actualTitle.equalsIgnoreCase(expectedTitle)) {
-					extTest.log(Status.PASS,"Passed.Actual-- "+ actualTitle +" && Expected- "+ expectedTitle);
-				}else {
-					extTest.log(Status.FAIL,"Failed.Actual-- "+ actualTitle +" && Expected- "+ expectedTitle);
-				}
-				Assert.assertEquals(actualTitle, expectedTitle);
-			}
-			
-		//verifyURL:
-			public  void verifyUrl(String expectedUrl) {
-			String 	actualUrl=driver.getCurrentUrl();
-			if(actualUrl.equalsIgnoreCase(expectedUrl)) {
-				extTest.log(Status.PASS,"Passed.Actual-- "+ actualUrl +" && Expected- "+ expectedUrl);
-			}else {
-				extTest.log(Status.FAIL,"Failed.Actual-- "+ actualUrl +" && Expected- "+ expectedUrl);
-			}
-			Assert.assertEquals(actualUrl, expectedUrl);
-			
-			}
-			
-		//verifyURL:
-				public  void verifyisEnabled(WebElement we,boolean expectedisEnabled) {
-				boolean actualisEnabled=we.isEnabled();
-				if(actualisEnabled==expectedisEnabled) {
-					extTest.log(Status.PASS,"Passed.Actual-- "+ actualisEnabled +" && Expected- "+ expectedisEnabled);
-				}else {
-					extTest.log(Status.FAIL,"Failed.Actual-- "+ actualisEnabled +" && Expected- "+ expectedisEnabled);
-				}
-				Assert.assertEquals(actualisEnabled, expectedisEnabled);		
-				}	
-			
-		//verifyURL:
-				public  void verifyisDisplayed(WebElement we,boolean expectedisDisplayed) {
-				boolean actualisDisplayed=we.isDisplayed();
-				if(actualisDisplayed==expectedisDisplayed) {
-					extTest.log(Status.PASS,"Passed.Actual-- "+ actualisDisplayed +" && Expected- "+ expectedisDisplayed);
-				}else {
-					extTest.log(Status.FAIL,"Failed.Actual-- "+ actualisDisplayed +" && Expected- "+ expectedisDisplayed);
-				}
-				Assert.assertEquals(actualisDisplayed, expectedisDisplayed);			
-			}	
+	// myverifyString:
+	public void VerifyInnerText(WebElement we, String expectedText) {
+		String acutalText = we.getText();
+
+		if (acutalText.equalsIgnoreCase(expectedText)) {
+			extTest.log(Status.PASS, "Passed.Actual-- " + acutalText + " && Expected- " + expectedText);
+		} else {
+			extTest.log(Status.FAIL, "Failed.Actual-- " + acutalText + "&& Expected- " + expectedText);
+		}
+		Assert.assertEquals(acutalText, expectedText); // Hard Assert:
+	}
+
+	// verifyTitle:
+	public void verifyTitle(String expectedTitle) {
+		String actualTitle = driver.getTitle();
+		if (actualTitle.equalsIgnoreCase(expectedTitle)) {
+			extTest.log(Status.PASS, "Passed.Actual-- " + actualTitle + " && Expected- " + expectedTitle);
+		} else {
+			extTest.log(Status.FAIL, "Failed.Actual-- " + actualTitle + " && Expected- " + expectedTitle);
+		}
+		Assert.assertEquals(actualTitle, expectedTitle);
+	}
+
+	// verifyURL:
+	public void verifyUrl(String expectedUrl) {
+		String actualUrl = driver.getCurrentUrl();
+		if (actualUrl.equalsIgnoreCase(expectedUrl)) {
+			extTest.log(Status.PASS, "Passed.Actual-- " + actualUrl + " && Expected- " + expectedUrl);
+		} else {
+			extTest.log(Status.FAIL, "Failed.Actual-- " + actualUrl + " && Expected- " + expectedUrl);
+		}
+		Assert.assertEquals(actualUrl, expectedUrl);
+
+	}
+
+	// verifyURL:
+	public void verifyisEnabled(WebElement we, boolean expectedisEnabled) {
+		boolean actualisEnabled = we.isEnabled();
+		if (actualisEnabled == expectedisEnabled) {
+			extTest.log(Status.PASS, "Passed.Actual-- " + actualisEnabled + " && Expected- " + expectedisEnabled);
+		} else {
+			extTest.log(Status.FAIL, "Failed.Actual-- " + actualisEnabled + " && Expected- " + expectedisEnabled);
+		}
+		Assert.assertEquals(actualisEnabled, expectedisEnabled);
+	}
+
+	// verifyURL:
+	public void verifyisDisplayed(WebElement we, boolean expectedisDisplayed) {
+		boolean actualisDisplayed = we.isDisplayed();
+		if (actualisDisplayed == expectedisDisplayed) {
+			extTest.log(Status.PASS, "Passed.Actual-- " + actualisDisplayed + " && Expected- " + expectedisDisplayed);
+		} else {
+			extTest.log(Status.FAIL, "Failed.Actual-- " + actualisDisplayed + " && Expected- " + expectedisDisplayed);
+		}
+		Assert.assertEquals(actualisDisplayed, expectedisDisplayed);
+	}
 
 //----------------------- takeScreenShort ------------------------------------------
 ////takeScreenShort:		
-		public String takeScreenShort(String testCaseName,String dataFormat){
-				// find-date formation == dd_MM_yyyy hh:mm:ss a
-			DateFormat df = new SimpleDateFormat(dataFormat);
-			String dateTime = df.format(new Date());
-						
-			TakesScreenshot tss = (TakesScreenshot) driver;
-			File snapShortsourceFileobj = tss.getScreenshotAs(OutputType.FILE);
-			File snapShortDestinationFileobj = new File("test-output\\"+testCaseName+dateTime+".png");
-				try {
-					Files.copy(snapShortsourceFileobj, snapShortDestinationFileobj);
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-//							TimeZone.setDefault(SimpleTimeZone.UTC_TIME);
-						return snapShortDestinationFileobj.getAbsolutePath();
+	public String takeScreenShort(String testCaseName, String dataFormat) {
+		// find-date formation == dd_MM_yyyy hh:mm:ss a
+		DateFormat df = new SimpleDateFormat(dataFormat);
+		String dateTime = df.format(new Date());
+
+		TakesScreenshot tss = (TakesScreenshot) driver;
+		File snapShortsourceFileobj = tss.getScreenshotAs(OutputType.FILE);
+		File snapShortDestinationFileobj = new File("test-output\\" + testCaseName + dateTime + ".png");
+		try {
+			Files.copy(snapShortsourceFileobj, snapShortDestinationFileobj);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
+//							TimeZone.setDefault(SimpleTimeZone.UTC_TIME);
+		return snapShortDestinationFileobj.getAbsolutePath();
+	}
+
 //--------------------------------------Exceldata-Read---------------------------------------
-		
-		public void excelDataRead(String fillPath) throws IOException {
-			
-		InputStream	excelFillPath=new FileInputStream(System.getProperty("user.dir")+fillPath);
-			Workbook workBook=new XSSFWorkbook(excelFillPath);
-			Sheet	sheetObj=workBook.getSheet("sheet1");
-				for(int i=0;i<=sheetObj.getLastRowNum();i++) {
-						Row rowObj=sheetObj.getRow(i);
-					for(int j=0;j<=rowObj.getLastCellNum()-1;j++) {
-						Cell cellObj=rowObj.getCell(j,MissingCellPolicy.RETURN_BLANK_AS_NULL);
-						String stringcellValue=null;
-						if(cellObj.getCellType().STRING==CellType.STRING) {
-							stringcellValue=cellObj.getStringCellValue();
-						}else {
-						Double	doubleData=cellObj.getNumericCellValue();
-						Integer	intData=doubleData.intValue();
-						stringcellValue	=intData.toString();
-						}
-						System.out.print(stringcellValue+",");
-					}
-					System.out.println();
+
+	public void excelDataReadXLSXFile(String fillPath) throws IOException {
+
+		InputStream excelFillPath = new FileInputStream(System.getProperty("user.dir") + fillPath);
+		Workbook workBook = new XSSFWorkbook(excelFillPath);
+		Sheet sheetObj = workBook.getSheet("sheet1");
+		for (int i = 0; i <= sheetObj.getLastRowNum(); i++) {
+			Row rowObj = sheetObj.getRow(i);
+			for (int j = 0; j <= rowObj.getLastCellNum() - 1; j++) {
+				Cell cellObj = rowObj.getCell(j, MissingCellPolicy.RETURN_BLANK_AS_NULL);
+				String stringcellValue = null;
+				if (cellObj.getCellType().STRING == CellType.STRING) {
+					stringcellValue = cellObj.getStringCellValue();
+				} else {
+					Double doubleData = cellObj.getNumericCellValue();
+					Integer intData = doubleData.intValue();
+					stringcellValue = intData.toString();
 				}
-		}	
-				
+				System.out.print(stringcellValue + ",");
+			}
+			System.out.println();
+		}
+	}
+
+	public void excelDataReadXLSFile(String fillPath) throws IOException {
+
+		InputStream excelFillPath = new FileInputStream(System.getProperty("user.dir") + fillPath);
+		Workbook workBook = new HSSFWorkbook(excelFillPath);
+		Sheet sheetObj = workBook.getSheet("sheet1");
+		for (int i = 0; i <= sheetObj.getLastRowNum(); i++) {
+			Row rowObj = sheetObj.getRow(i);
+			for (int j = 0; j <= rowObj.getLastCellNum() - 1; j++) {
+				Cell cellObj = rowObj.getCell(j, MissingCellPolicy.RETURN_BLANK_AS_NULL);
+				String stringcellValue = null;
+				if (cellObj.getCellType().STRING == CellType.STRING) {
+					stringcellValue = cellObj.getStringCellValue();
+				} else {
+					Double doubleData = cellObj.getNumericCellValue();
+					Integer intData = doubleData.intValue();
+					stringcellValue = intData.toString();
+				}
+				System.out.print(stringcellValue + ",");
+			}
+			System.out.println();
+		}
+	}
 //	public void cvsDataRead(String fillPath) throws IOException {
 //					
 //			InputStream	excelFillPath=new FileInputStream(System.getProperty("user.dir")+fillPath);
@@ -1530,27 +1576,28 @@ public class WebUtil {
 //		}
 
 //-------------------------------------.properties_files-----------------------------------------
-	
-		public void loadProperties(String propertiesFile){
-			
-		InputStream file = null;			
+
+	public void loadProperties(String propertiesFile) {
+
+		InputStream file = null;
 		try {
-			file=new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\resources\\"+propertiesFile+".properties");
+			file = new FileInputStream(
+					System.getProperty("user.dir") + "\\src\\test\\resources\\" + propertiesFile + ".properties");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			}	
-		prop=new Properties();
+		}
+		prop = new Properties();
 		try {
 			prop.load(file);
 		} catch (IOException e) {
 			e.printStackTrace();
-			}
-		
 		}
-		
-		public String getPropertyData(String keyName) {
-		String data=prop.getProperty(keyName);
-			return data ;
-		}
-		
+
+	}
+
+	public String getPropertyData(String keyName) {
+		String data = prop.getProperty(keyName);
+		return data;
+	}
+
 }

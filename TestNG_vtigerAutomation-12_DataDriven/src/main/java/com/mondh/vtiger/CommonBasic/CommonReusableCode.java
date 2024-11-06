@@ -131,12 +131,12 @@ public class CommonReusableCode extends CommonOR {
 		String acutalString=null;
 		for (int i = 0; i <= tableData.size() - 1; i++) {
 				acutalString = tableData.get(i);
-			 if(acutalString.equalsIgnoreCase(testCaseDataMap.get("AccountName"))) {
-				 gm.getExtTest().log(Status.INFO,"PASS:the Acutal "+acutalString+" && Expected "+testCaseDataMap.get("AccountName"));
+			 if(acutalString.equalsIgnoreCase(testCaseDataMap.get("Account Name"))) {
+				 gm.getExtTest().log(Status.INFO,"PASS:the Acutal "+acutalString+" && Expected "+testCaseDataMap.get("Account Name"));
 					break;
 				}
 		}
-		Assert.assertEquals(acutalString, testCaseDataMap.get("AccountName"));
+		Assert.assertEquals(acutalString, testCaseDataMap.get("Account Name"));
 	}
 
 //update_match:
@@ -145,13 +145,13 @@ public class CommonReusableCode extends CommonOR {
 		String we=null;
 		for (int i = 0; i <= tablecolumnList.size() - 1; i++) {
 			 we = tablecolumnList.get(i);
-			if (we.equalsIgnoreCase(testCaseDataMap.get("AccountName"))) {
-				gm.getExtTest().log(Status.INFO,"Old your Data: " + testCaseDataMap.get("OldAccountName"));
-				gm.getExtTest().log(Status.INFO,"New Upadte Data: " + testCaseDataMap.get("NewAccountName"));
+			if (we.equalsIgnoreCase(testCaseDataMap.get("New Account Name"))) {
+				gm.getExtTest().log(Status.INFO,"Old your Data: " + testCaseDataMap.get("Old Account Name"));
+				gm.getExtTest().log(Status.INFO,"New Upadte Data: " + testCaseDataMap.get("New Account Name"));
 				break;
 			}
 		}
-		Assert.assertEquals(we, testCaseDataMap.get("NewAccountName"));
+		Assert.assertEquals(we, testCaseDataMap.get("New Account Name"));
 	}
 	
 //SearchOptionbase_findItemcheck:

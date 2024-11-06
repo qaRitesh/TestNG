@@ -3,6 +3,9 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="true"/>
 	<list key="searchhistory">
+		<item value="public"/>
+		<item value="xssf"/>
+		<item value="chromeoptions"/>
 		<item value="sendkeys"/>
 		<item value="select"/>
 		<item value="topsave"/>

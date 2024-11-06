@@ -21,7 +21,7 @@ public class MarketingAccountCreateAccountPage extends MarketingAccountCreateAcc
 	public void fillAccountInformationDeatils(Map<String,String> testCaseDataMap) throws InterruptedException{
 		String randomName=RandomString.make(5);
 		
-		gm.inputData(getAccountNameTB(),testCaseDataMap.get("AccountName"));
+		gm.inputData(getAccountNameTB(),testCaseDataMap.get("Account Name"));
 		gm.inputData(getWebsiteTB(),testCaseDataMap.get("WebSite"));
 		gm.inputData(getTickersymbolTB(),testCaseDataMap.get("TicketSymbol"));
 		gm.inputData(getFaxTB(),testCaseDataMap.get( "Fax"));
@@ -39,7 +39,7 @@ public class MarketingAccountCreateAccountPage extends MarketingAccountCreateAcc
 	}
 	
 	public void updateAccountName(Map<String,String> testCaseDataMap) {
-		gm.inputData(getAccountNameTB(),testCaseDataMap.get("NewAccountName"));
+		gm.inputData(getAccountNameTB(),testCaseDataMap.get("New Account Name"));
 	}
 	
 	

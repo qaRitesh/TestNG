@@ -108,7 +108,7 @@ public class MarketingAccountTestScript extends BaseTest {
 		gm.getExtTest().log(Status.INFO,"verifyVT004DeleteAccounts TestCase Started");
 		comm = new CommonReusableCode(gm);
 		// MarketingAccount_LeandingPage:
-		comm.goToMarketingAccountSubmodule();
+		comm.goToMarketingAccountSubmodule();	
 		String deleteItem=data.getRowDataByTestcase("Bhairaja");
 		gm.tableItemClick("//table[@class='lvt small']", 3, deleteItem);
 		Thread.sleep(5000);

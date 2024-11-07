@@ -20,7 +20,6 @@
 		<classes>
 			<class
 				name="com.mondh.vtiger.TestScript.MarketingAccountTestScript">
-
 				<!-- <methods> <exclude name="verifyVT004DeleteAccount"/> </methods> -->
 			</class>
 

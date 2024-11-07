@@ -7,11 +7,14 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-	<maven.compiler.source>21</maven.compiler.source>	
-	<maven.compiler.target>21</maven.compiler.target>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
 	</properties>
-	
-	<build>		<!--maven surefire plugin -->
+
+
+
+<!--maven surefire plugin -->
+	<build>		
 		<plugins>
 
 			<plugin>
@@ -20,7 +23,7 @@
 				<version>3.5.1</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>testng.xml</suiteXmlFile>
+						<suiteXmlFile>testng.xml</suiteXmlFile> <!--xml File name Provided:-->
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
@@ -30,7 +33,9 @@
 
 	<dependencies>
 
-		<!-- selenium -->
+
+
+<!-- selenium -->
 		<!--https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -39,7 +44,8 @@
 		</dependency>
 
 
-		<!-- cucumber -->
+
+<!--cucumber-->
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
@@ -63,7 +69,8 @@
 		</dependency>
 
 
-		<!-- LomBOk -->
+
+<!-- LomBOk -->
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -72,6 +79,9 @@
 			<scope>provided</scope>
 		</dependency>
 
+
+
+<!--TestNG-->
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 		<dependency>
 			<groupId>org.testng</groupId>
@@ -79,6 +89,9 @@
 			<version>7.10.2</version>
 		</dependency>
 
+
+
+<!--ExtentReports:-->
 		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
 		<dependency>
 			<groupId>com.aventstack</groupId>
@@ -86,7 +99,9 @@
 			<version>5.1.2</version>
 		</dependency>
 
-		<!-- Apachi POI "exeal Data read" -->
+
+
+<!-- Apachi POI "exeal Data read" -->
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
@@ -100,6 +115,15 @@
 			<version>5.3.0</version>
 		</dependency>
 
+
+
+<!--DataBase-->
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.33</version>
+		</dependency>
 
 	</dependencies>
 
